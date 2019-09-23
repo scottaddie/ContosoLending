@@ -1,0 +1,42 @@
+﻿@page "/"
+@using ContosoLending.Ui.Components
+
+<div class="ui three steps">
+    <Step Id="reception">
+        <i class="inbox icon" id="reception-icon" data-icon="inbox"></i>
+        <StepContent Title="Loan Reception" Description="Initial validation of the loan application" />
+    </Step>
+    <Step Id="agencies">
+        <i class="sitemap icon" id="agencies-icon" data-icon="sitemap"></i>
+        <StepContent Title="Agency Validation" Description="Check external credit agencies" />
+    </Step>
+    <Step Id="confirmation">
+        <i class="info icon" id="confirmation-icon" data-icon="info"></i>
+        <StepContent Title="Loan Approval" Description="Final result of the loan application" />
+    </Step>
+</div>
+
+<div class="ui three steps">
+    <div class="step">
+    </div>
+    <div class="step">
+        <div class="content">
+            <div class="ui vertical steps">
+                <Step Id="contoso">
+                    <i class="credit card icon" id="contoso-icon" data-icon="credit card"></i>
+                    <StepContent Title="Contoso, Ltd." Description="We never decline!" />
+                </Step>
+                <Step Id="fabrikam">
+                    <i class="credit card icon" id="fabrikam-icon" data-icon="credit card"></i>
+                    <StepContent Title="Fabrikam, Inc." Description="Lock your rate with us!" />
+                </Step>
+                <Step Id="woodgrove">
+                    <i class="credit card icon" id="woodgrove-icon" data-icon="credit card"></i>
+                    <StepContent Title="Woodgrove Bank" Description="Best interest rates in town" />
+                </Step>
+            </div>
+        </div>
+    </div>
+    <div class="disabled step">
+    </div>
+</div>

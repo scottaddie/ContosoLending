@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "semantic-ui@2.4.2",
+      "destination": "wwwroot/lib/semantic-ui/",
+      "files": [
+        "dist/semantic.min.css",
+        "dist/semantic.min.js",
+        "dist/themes/default/assets/fonts/icons.eot",
+        "dist/themes/default/assets/fonts/icons.ttf",
+        "dist/themes/default/assets/fonts/icons.svg",
+        "dist/themes/default/assets/fonts/icons.woff",
+        "dist/themes/default/assets/fonts/icons.woff2"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/",
+      "files": [
+        "css/bootstrap.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "open-iconic@1.1.1",
+      "destination": "wwwroot/lib/open-iconic/",
+      "files": [
+        "font/css/open-iconic-bootstrap.min.css",
+        "font/fonts/open-iconic.eot",
+        "font/fonts/open-iconic.otf",
+        "font/fonts/open-iconic.svg",
+        "font/fonts/open-iconic.ttf",
+        "font/fonts/open-iconic.woff"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@3.0.0-rc1.19457.4",
+      "destination": "wwwroot/lib/@microsoft/signalr",
+      "files": [
+        "dist/browser/signalr.min.js"
+      ]
+    }
+  ]
+}
