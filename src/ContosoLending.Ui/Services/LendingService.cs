@@ -1,7 +1,8 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using ContosoLending.DomainModel;
+using AutoMapper;
 using Microsoft.AspNetCore.Components;
+using DM = ContosoLending.DomainModel;
 
 namespace ContosoLending.Ui.Services
 {
@@ -9,16 +10,21 @@ namespace ContosoLending.Ui.Services
     {
         private readonly string _route;
         private readonly HttpClient _httpClient;
+        private readonly IMapper _mapper;
 
-        public LendingService(HttpClient httpClient)
+        public LendingService(
+            HttpClient httpClient,
+            IMapper mapper)
         {
             _httpClient = httpClient;
             _route = httpClient.BaseAddress.AbsoluteUri;
+            _mapper = mapper;
         }
 
-        public async Task SubmitLoanAppAsync(LoanApplication loanApp)
+        public async Task SubmitLoanAppAsync(ViewModels.LoanApplication loanApp)
         {
-            await _httpClient.PostJsonAsync<LoanApplication>(_route, loanApp);
+            var model = _mapper.Map<DM.LoanApplication>(loanApp);
+            await _httpClient.PostJsonAsync<DM.LoanApplication>(_route, model);
         }
     }
 }

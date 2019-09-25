@@ -1,12 +1,12 @@
 ﻿@page "/"
-@using DM = ContosoLending.DomainModel;
+@using ContosoLending.Ui.Validation
 @inject NavigationManager NavigationManager
 @inject Services.LendingService LendingService
 
 <h3>Loan Application</h3>
 
 <EditForm Model="LoanApp" OnValidSubmit="SubmitLoanApp">
-    <DataAnnotationsValidator />
+    <RecursiveDataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="form-group">
@@ -34,7 +34,7 @@
 </EditForm>
 
 @code {
-    private DM.LoanApplication LoanApp = new DM.LoanApplication();
+    private ViewModels.LoanApplication LoanApp = new ViewModels.LoanApplication();
 
     private async Task SubmitLoanApp()
     {

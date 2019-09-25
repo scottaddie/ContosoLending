@@ -1,7 +1,9 @@
 using System;
 using System.Net;
 using System.Net.Mime;
+using AutoMapper;
 using ContosoLending.Ui.Data;
+using ContosoLending.Ui.Infrastructure;
 using ContosoLending.Ui.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +38,12 @@ namespace ContosoLending.Ui
                     HttpRequestHeader.Accept.ToString(),
                     MediaTypeNames.Application.Json);
             });
+
+            var mappingConfig = new MapperConfiguration(config =>
+                config.AddProfile(new MappingProfile()));
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
