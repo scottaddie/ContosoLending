@@ -1,5 +1,6 @@
 ﻿@page "/loandashboard"
 @using ContosoLending.Ui.Components
+@inject IJSRuntime JsRuntime;
 
 <div class="ui three steps">
     <Step Id="reception">
@@ -40,3 +41,10 @@
     <div class="disabled step">
     </div>
 </div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await JsRuntime.InvokeVoidAsync("start");
+    }
+}

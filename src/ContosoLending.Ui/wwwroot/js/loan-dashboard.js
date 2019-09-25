@@ -19,7 +19,7 @@ function setStepState(step, state) {
         }
     }
     else { // reset icon to original state
-        var ogIcon = document.getElementById(step + '-icon').getAttribute('data-icon');
+        const ogIcon = document.getElementById(step + '-icon').getAttribute('data-icon');
         document.getElementById(step + '-icon').className = ogIcon + ' icon';
     }
 }
@@ -76,6 +76,7 @@ function registerEventHandlers() {
 }
 
 const connection = new signalR.HubConnectionBuilder()
+    // TODO: retrieve this URL from appsettings.json
     .withUrl('http://localhost:7071/api')
     .withAutomaticReconnect([0, 0, 10000])
     .configureLogging(signalR.LogLevel.Information)

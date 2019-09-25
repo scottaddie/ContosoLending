@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/lib/semantic-ui/dist/semantic.min.css" />
     <link href="css/site.css" rel="stylesheet" asp-append-version="true" />
 </head>
-<body onload="start()">
+<body>
     <app>
         @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
     </app>

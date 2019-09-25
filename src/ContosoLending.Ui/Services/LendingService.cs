@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Components;
 using DM = ContosoLending.DomainModel;
 
 namespace ContosoLending.Ui.Services
@@ -24,7 +23,7 @@ namespace ContosoLending.Ui.Services
         public async Task SubmitLoanAppAsync(ViewModels.LoanApplication loanApp)
         {
             var model = _mapper.Map<DM.LoanApplication>(loanApp);
-            await _httpClient.PostJsonAsync<DM.LoanApplication>(_route, model);
+            await _httpClient.PostAsJsonAsync<DM.LoanApplication>(_route, model);
         }
     }
 }
