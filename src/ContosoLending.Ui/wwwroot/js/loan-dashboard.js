@@ -24,7 +24,7 @@ function setStepState(step, state) {
     }
 }
 
-function registerEventHandlers() {
+function registerEventHandlers(connection) {
     connection.on('loanApplicationStart', loanApplication => {
         resetView();
         document.getElementById('reception').classList.add('active');
@@ -75,16 +75,18 @@ function registerEventHandlers() {
     });
 }
 
-const connection = new signalR.HubConnectionBuilder()
-    // TODO: retrieve this URL from appsettings.json
-    .withUrl('http://localhost:7071/api')
-    .withAutomaticReconnect([0, 0, 10000])
-    .configureLogging(signalR.LogLevel.Information)
-    .build();
+function buildHubConnection(hubUrl) {
+    return new signalR.HubConnectionBuilder()
+        .withUrl(hubUrl)
+        .withAutomaticReconnect([0, 0, 10000])
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+}
 
-async function start() {
+async function start(hubUrl) {
     try {
-        registerEventHandlers();
+        const connection = buildHubConnection(hubUrl);
+        registerEventHandlers(connection);
         await connection.start();
         console.assert(connection.state === signalR.HubConnectionState.Connected);
         console.log('connected');

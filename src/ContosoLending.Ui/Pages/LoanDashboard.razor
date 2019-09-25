@@ -1,6 +1,8 @@
 ﻿@page "/loandashboard"
 @using ContosoLending.Ui.Components
-@inject IJSRuntime JsRuntime;
+@using Microsoft.Extensions.Configuration
+@inject IJSRuntime JsRuntime
+@inject IConfiguration Configuration
 
 <div class="ui three steps">
     <Step Id="reception">
@@ -45,6 +47,6 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await JsRuntime.InvokeVoidAsync("start");
+        await JsRuntime.InvokeVoidAsync("start", Configuration["LendingService:BaseAddress"]);
     }
 }
