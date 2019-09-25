@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using ContosoLending.LoanProcessing.Models;
+using ContosoLending.DomainModel;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 
@@ -21,7 +21,7 @@ namespace ContosoLending.LoanProcessing.Functions
 
             await Task.Delay(new Random().Next(1000, 3000)); // simulate variant processing times
 
-            var result = loanApplication.LoanAmount < 10000;
+            bool result = loanApplication.LoanAmount < 10000;
 
             await dashboardMessages.AddAsync(new SignalRMessage
             {

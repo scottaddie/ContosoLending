@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ContosoLending.DomainModel;
 using ContosoLending.LoanProcessing.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
@@ -24,7 +25,7 @@ namespace ContosoLending.LoanProcessing.Functions
             logger.LogWarning($"Status of application for {loanApplication.Applicant.ToString()} for {loanApplication.LoanAmount}: Checking with agencies.");
 
             // start the process and perform initial validation
-            var loanStarted = await context.CallActivityAsync<bool>(nameof(Receive), loanApplication);
+            bool loanStarted = await context.CallActivityAsync<bool>(nameof(Receive), loanApplication);
 
             // fan out and check the credit agencies
             if (loanStarted)

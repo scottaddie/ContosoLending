@@ -1,4 +1,6 @@
-﻿namespace ContosoLending.LoanProcessing.Models
+﻿using ContosoLending.DomainModel;
+
+namespace ContosoLending.LoanProcessing.Models
 {
     public class CreditAgencyRequest
     {

@@ -1,4 +1,8 @@
+using System;
+using System.Net;
+using System.Net.Mime;
 using ContosoLending.Ui.Data;
+using ContosoLending.Ui.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +25,17 @@ namespace ContosoLending.Ui
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
+
+            services.AddHttpClient<LendingService>(config =>
+            {
+                config.BaseAddress = new Uri(
+                    $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}");
+                config.DefaultRequestHeaders.Add(
+                    HttpRequestHeader.Accept.ToString(),
+                    MediaTypeNames.Application.Json);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
