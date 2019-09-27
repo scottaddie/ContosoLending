@@ -4,6 +4,12 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -12,12 +18,6 @@ a, .btn-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
-
-app {
-    position: relative;
-    display: flex;
-    flex-direction: column;
 }
 
 .top-row {
@@ -118,7 +118,7 @@ app {
 }
 
 @media (min-width: 768px) {
-    app {
+    body {
         flex-direction: row;
     }
 

@@ -1,0 +1,17 @@
+﻿<div class="input-group-prepend" @onclick="SwitchCurrencyType">
+    <button class="btn btn-outline-secondary" type="button">@CurrencyType</button>
+</div>
+
+@code {
+    [Parameter]
+    public string CurrencyType { get; set; }
+
+    [Parameter]
+    public EventCallback<string> CurrencyTypeChanged { get; set; }
+
+    Task SwitchCurrencyType()
+    {
+        CurrencyType = CurrencyType == "$" ? "Лв." : "$";
+        return CurrencyTypeChanged.InvokeAsync(CurrencyType);
+    }
+}

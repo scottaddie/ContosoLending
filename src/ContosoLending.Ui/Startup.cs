@@ -1,6 +1,3 @@
-using System;
-using System.Net;
-using System.Net.Mime;
 using AutoMapper;
 using ContosoLending.Ui.Data;
 using ContosoLending.Ui.Infrastructure;
@@ -10,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace ContosoLending.Ui
 {
@@ -31,13 +29,8 @@ namespace ContosoLending.Ui
             IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
 
             services.AddHttpClient<LendingService>(config =>
-            {
                 config.BaseAddress = new Uri(
-                    $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}");
-                config.DefaultRequestHeaders.Add(
-                    HttpRequestHeader.Accept.ToString(),
-                    MediaTypeNames.Application.Json);
-            });
+                    $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}"));
 
             var mappingConfig = new MapperConfiguration(config =>
                 config.AddProfile(new MappingProfile()));
@@ -55,13 +48,11 @@ namespace ContosoLending.Ui
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

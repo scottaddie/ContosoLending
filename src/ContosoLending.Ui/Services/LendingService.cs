@@ -7,7 +7,6 @@ namespace ContosoLending.Ui.Services
 {
     public class LendingService
     {
-        private readonly string _route;
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
 
@@ -16,14 +15,13 @@ namespace ContosoLending.Ui.Services
             IMapper mapper)
         {
             _httpClient = httpClient;
-            _route = httpClient.BaseAddress.AbsoluteUri;
             _mapper = mapper;
         }
 
         public async Task SubmitLoanAppAsync(ViewModels.LoanApplication loanApp)
         {
             var model = _mapper.Map<DM.LoanApplication>(loanApp);
-            await _httpClient.PostAsJsonAsync<DM.LoanApplication>(_route, model);
+            await _httpClient.PostAsJsonAsync<DM.LoanApplication>(_httpClient.BaseAddress.AbsoluteUri, model);
         }
     }
 }

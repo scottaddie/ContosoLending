@@ -11,5 +11,7 @@ namespace ContosoLending.Ui.ViewModels
 
         [Range(1, 100000)]
         public double LoanAmount { get; set; }
+
+        public string CurrencyType { get; set; } = "$";
     }
 }

@@ -73,12 +73,21 @@ function registerEventHandlers(connection) {
             setStepState('confirmation', 'disabled');
         }
     });
+
+    connection.onreconnecting(error => {
+        console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
+        console.error(error);
+    });
+
+    connection.onreconnected(() => {
+        console.assert(connection.state === signalR.HubConnectionState.Connected);
+    });
 }
 
 function buildHubConnection(hubUrl) {
     return new signalR.HubConnectionBuilder()
         .withUrl(hubUrl)
-        .withAutomaticReconnect([0, 0, 10000])
+        .withAutomaticReconnect()
         .configureLogging(signalR.LogLevel.Information)
         .build();
 }
