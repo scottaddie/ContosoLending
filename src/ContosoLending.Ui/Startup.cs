@@ -1,5 +1,4 @@
 using AutoMapper;
-using ContosoLending.Ui.Data;
 using ContosoLending.Ui.Infrastructure;
 using ContosoLending.Ui.Services;
 using Microsoft.AspNetCore.Builder;
@@ -24,7 +23,6 @@ namespace ContosoLending.Ui
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
             IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
 

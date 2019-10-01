@@ -7,6 +7,7 @@ namespace ContosoLending.Ui.Infrastructure
         public MappingProfile()
         {
             CreateMap<ViewModels.Applicant, DomainModel.Applicant>();
+            CreateMap<ViewModels.LoanAmount, DomainModel.LoanAmount>();
             CreateMap<ViewModels.LoanApplication, DomainModel.LoanApplication>();
         }
     }

@@ -28,7 +28,7 @@ namespace ContosoLending.LoanProcessing.Functions
 
             var result = new CreditAgencyResult
             {
-                IsApproved = !(request.AgencyName.Contains("Woodgrove") && request.Application.LoanAmount > 4999),
+                IsApproved = !(request.AgencyName.Contains("Woodgrove") && request.Application.LoanAmount.Amount > 4999),
                 Application = request.Application,
                 AgencyId = request.AgencyId
             };

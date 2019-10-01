@@ -23,10 +23,9 @@
     <div class="form-group">
         <label for="loanAmount">Loan Amount:</label>
         <div class="input-group input-group-lg">
-            <CurrencyPicker @bind-CurrencyType="LoanApp.CurrencyType" />
-            <InputNumber id="loanAmount" @bind-Value="LoanApp.LoanAmount" class="form-control" />
+            <CurrencyPicker @bind-LoanAmount="LoanApp.LoanAmount" />
         </div>
-        <ValidationMessage For="() => LoanApp.LoanAmount" />
+        <ValidationMessage For="() => LoanApp.LoanAmount.Amount" />
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

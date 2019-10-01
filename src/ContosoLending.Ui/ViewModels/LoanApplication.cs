@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using ContosoLending.Ui.Validation;
+﻿using ContosoLending.Ui.Validation;
 
 namespace ContosoLending.Ui.ViewModels
 {
@@ -9,9 +7,7 @@ namespace ContosoLending.Ui.ViewModels
         [ValidateRecursive]
         public Applicant Applicant { get; set; } = new Applicant();
 
-        [Range(1, 100000)]
-        public double LoanAmount { get; set; }
-
-        public string CurrencyType { get; set; } = "$";
+        [ValidateRecursive]
+        public LoanAmount LoanAmount { get; set; } = new LoanAmount();
     }
 }

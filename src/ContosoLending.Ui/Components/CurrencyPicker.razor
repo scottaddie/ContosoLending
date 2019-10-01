@@ -1,17 +1,29 @@
 ﻿<div class="input-group-prepend" @onclick="SwitchCurrencyType">
-    <button class="btn btn-outline-secondary" type="button">@CurrencyType</button>
+    <button class="btn btn-outline-secondary" type="button">@LoanAmount.CurrencyType</button>
 </div>
+<InputNumber id="loanAmount" @bind-Value="LoanAmount.Amount" class="form-control" />
 
 @code {
     [Parameter]
-    public string CurrencyType { get; set; }
+    public ViewModels.LoanAmount LoanAmount { get; set; }
 
     [Parameter]
-    public EventCallback<string> CurrencyTypeChanged { get; set; }
+    public EventCallback<ViewModels.LoanAmount> LoanAmountChanged { get; set; }
 
     Task SwitchCurrencyType()
     {
-        CurrencyType = CurrencyType == "$" ? "Лв." : "$";
-        return CurrencyTypeChanged.InvokeAsync(CurrencyType);
+        const decimal exchangeRate = 0.56m;
+        LoanAmount.CurrencyType = LoanAmount.CurrencyType == "$" ? "Лв." : "$";
+
+        if (LoanAmount.CurrencyType == "Лв.")
+        {
+            LoanAmount.Amount = decimal.Round(LoanAmount.Amount / exchangeRate, 2);
+        }
+        else
+        {
+            LoanAmount.Amount = decimal.Round(LoanAmount.Amount * exchangeRate, 2);
+        }
+
+        return LoanAmountChanged.InvokeAsync(LoanAmount);
     }
 }

@@ -21,7 +21,7 @@ namespace ContosoLending.LoanProcessing.Functions
 
             await Task.Delay(new Random().Next(1000, 3000)); // simulate variant processing times
 
-            bool result = loanApplication.LoanAmount < 10000;
+            bool result = loanApplication.LoanAmount.Amount < 10000;
 
             await dashboardMessages.AddAsync(new SignalRMessage
             {
