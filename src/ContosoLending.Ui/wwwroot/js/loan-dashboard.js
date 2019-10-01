@@ -93,8 +93,9 @@ function buildHubConnection(hubUrl) {
 }
 
 async function start(hubUrl) {
+    const connection = buildHubConnection(hubUrl);
+
     try {
-        const connection = buildHubConnection(hubUrl);
         registerEventHandlers(connection);
         await connection.start();
         console.assert(connection.state === signalR.HubConnectionState.Connected);

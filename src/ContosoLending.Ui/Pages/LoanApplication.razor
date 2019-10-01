@@ -28,14 +28,17 @@
         <ValidationMessage For="() => LoanApp.LoanAmount.Amount" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" disabled="@IsDisabled">Submit</button>
 </EditForm>
 
 @code {
     private ViewModels.LoanApplication LoanApp = new ViewModels.LoanApplication();
 
+    public bool IsDisabled { get; set; }
+
     async Task SubmitLoanApp()
     {
+        IsDisabled = true;
         await LendingService.SubmitLoanAppAsync(LoanApp);
         NavigationManager.NavigateTo("/loandashboard");
     }
