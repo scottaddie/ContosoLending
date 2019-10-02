@@ -21,8 +21,11 @@ namespace ContosoLending.Ui
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddGrpc();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddSingleton<ExchangeRateService>();
 
             IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
 

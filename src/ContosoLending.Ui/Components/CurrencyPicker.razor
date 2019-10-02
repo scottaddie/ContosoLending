@@ -1,4 +1,7 @@
-﻿<div class="input-group-prepend" @onclick="SwitchCurrencyType">
+﻿@using ContosoLending.Ui.Services
+@inject ExchangeRateService ExchangeRateService
+
+<div class="input-group-prepend" @onclick="SwitchCurrencyType">
     <button class="btn btn-outline-secondary" type="button">@LoanAmount.CurrencyType</button>
 </div>
 <InputNumber id="loanAmount" @bind-Value="LoanAmount.Amount" class="form-control" />
@@ -12,7 +15,7 @@
 
     Task SwitchCurrencyType()
     {
-        const decimal exchangeRate = 0.56m;
+        decimal exchangeRate = Convert.ToDecimal(ExchangeRateService.GetExchangeRate());
         LoanAmount.CurrencyType = LoanAmount.CurrencyType == "$" ? "Лв." : "$";
 
         if (LoanAmount.CurrencyType == "Лв.")

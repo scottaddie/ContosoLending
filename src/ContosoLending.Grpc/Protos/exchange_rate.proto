@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package ContosoLending.Grpc;
+
+service ExchangeRateManager {
+	rpc GetExchangeRate (ExchangeRateRequest) returns (ExchangeRateReply) {};
+}
+
+message ExchangeRateRequest {
+	string currency_type_from = 1;
+	string currency_type_to = 2;
+}
+
+message ExchangeRateReply {
+	double exchange_rate = 1;
+}
