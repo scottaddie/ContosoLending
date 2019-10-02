@@ -25,7 +25,7 @@ namespace ContosoLending.Ui
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<ExchangeRateService>();
+            services.AddSingleton<CurrencyConversionService>();
 
             IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
 

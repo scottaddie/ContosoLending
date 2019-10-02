@@ -1,6 +1,7 @@
 ﻿@using ContosoLending.Ui.Infrastructure
+@using ContosoLending.DomainModel
 @using ContosoLending.Ui.Services
-@inject ExchangeRateService ExchangeRateService
+@inject CurrencyConversionService CurrencyConversionService
 
 <div class="input-group-prepend" @onclick="SwitchCurrencyType">
     <button class="btn btn-outline-secondary" type="button">@LoanAmount.CurrencyType</button>
@@ -16,20 +17,21 @@
 
     Task SwitchCurrencyType()
     {
-        decimal exchangeRate = Convert.ToDecimal(ExchangeRateService.GetExchangeRate(
-            Constants.UsDollarAlias, Constants.BulgarianLevAlias));
-        LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol 
-            ? Constants.BulgarianLevSymbol 
-            : Constants.UsDollarSymbol;
+        Currency currencyTypeFrom = 
+            CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
+        LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol
+            ? Constants.BulgarianLevSymbol : Constants.UsDollarSymbol;
+        Currency currencyTypeTo = 
+            CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
 
-        if (LoanAmount.CurrencyType == Constants.BulgarianLevSymbol)
+        var conversion = new CurrencyConversion
         {
-            LoanAmount.Amount = decimal.Round(LoanAmount.Amount / exchangeRate, 2);
-        }
-        else
-        {
-            LoanAmount.Amount = decimal.Round(LoanAmount.Amount * exchangeRate, 2);
-        }
+            CurrencyTypeFrom = currencyTypeFrom,
+            CurrencyTypeTo = currencyTypeTo,
+            AmountToConvert = LoanAmount.Amount,
+        };
+
+        LoanAmount.Amount = CurrencyConversionService.GetConvertedAmount(conversion);
 
         return LoanAmountChanged.InvokeAsync(LoanAmount);
     }
