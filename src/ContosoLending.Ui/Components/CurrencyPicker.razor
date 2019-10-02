@@ -16,7 +16,8 @@
 
     Task SwitchCurrencyType()
     {
-        decimal exchangeRate = Convert.ToDecimal(ExchangeRateService.GetExchangeRate());
+        decimal exchangeRate = Convert.ToDecimal(ExchangeRateService.GetExchangeRate(
+            Constants.UsDollarAlias, Constants.BulgarianLevAlias));
         LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol 
             ? Constants.BulgarianLevSymbol 
             : Constants.UsDollarSymbol;

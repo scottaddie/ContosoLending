@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ContosoLending.Grpc;
+package ContosoLending.Grpc.Server;
 
 service ExchangeRateManager {
 	rpc GetExchangeRate (ExchangeRateRequest) returns (ExchangeRateReply) {};
