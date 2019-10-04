@@ -4,6 +4,7 @@ using ContosoLending.Ui.Infrastructure;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Threading.Tasks;
 
 namespace ContosoLending.Ui.Services
 {
@@ -16,7 +17,7 @@ namespace ContosoLending.Ui.Services
             _configuration = configuration;
         }
 
-        private double GetExchangeRate(Currency currencyTypeFrom, Currency currencyTypeTo)
+        private async Task<double> GetExchangeRateAsync(Currency currencyTypeFrom, Currency currencyTypeTo)
         {
             using var channel = GrpcChannel.ForAddress(_configuration["ExchangeRateService:BaseAddress"]);
             var client = new ExchangeRateManager.ExchangeRateManagerClient(channel);
@@ -26,15 +27,15 @@ namespace ContosoLending.Ui.Services
                 CurrencyTypeTo = GetCurrencyTypeAlias(currencyTypeTo),
             };
 
-            ExchangeRateReply exchangeRate = client.GetExchangeRate(request);
+            ExchangeRateReply exchangeRate = await client.GetExchangeRateAsync(request);
 
             return exchangeRate.ExchangeRate;
         }
 
-        public decimal GetConvertedAmount(CurrencyConversion conversion)
+        public async Task<decimal> GetConvertedAmountAsync(CurrencyConversion conversion)
         {
             decimal convertedAmount;
-            decimal exchangeRate = Convert.ToDecimal(GetExchangeRate(
+            decimal exchangeRate = Convert.ToDecimal(await GetExchangeRateAsync(
                 conversion.CurrencyTypeFrom, conversion.CurrencyTypeTo));
 
             if (conversion.CurrencyTypeTo == Currency.BulgarianLev)
