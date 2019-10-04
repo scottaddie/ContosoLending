@@ -1,5 +1,5 @@
-﻿@using ContosoLending.Ui.Infrastructure
-@using ContosoLending.DomainModel
+﻿@using ContosoLending.DomainModel
+@using ContosoLending.Ui.Infrastructure
 @using ContosoLending.Ui.Services
 @inject CurrencyConversionService CurrencyConversionService
 
@@ -17,11 +17,11 @@
 
     Task SwitchCurrencyType()
     {
-        Currency currencyTypeFrom = 
+        Currency currencyTypeFrom =
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
         LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol
             ? Constants.BulgarianLevSymbol : Constants.UsDollarSymbol;
-        Currency currencyTypeTo = 
+        Currency currencyTypeTo =
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
 
         var conversion = new CurrencyConversion

@@ -33,7 +33,7 @@ namespace ContosoLending.Ui.Services
 
         public decimal GetConvertedAmount(CurrencyConversion conversion)
         {
-            decimal convertedAmount = 0.00m;
+            decimal convertedAmount;
             decimal exchangeRate = Convert.ToDecimal(GetExchangeRate(
                 conversion.CurrencyTypeFrom, conversion.CurrencyTypeTo));
 
