@@ -7,14 +7,14 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
+        <li class="nav-item px-3" data-icon="calculator">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-calculator" aria-hidden="true"></span> Loan Application
+                <span><i class="calculator icon" aria-hidden="true"></i></span> Loan Application
             </NavLink>
         </li>
-        <li class="nav-item px-3">
+        <li class="nav-item px-3" data-icon="dashboard">
             <NavLink class="nav-link" href="loandashboard">
-                <span class="oi oi-dashboard" aria-hidden="true"></span> Loan Dashboard
+                <span><i class="dashboard icon" aria-hidden="true"></i></span> Loan Decisioning
             </NavLink>
         </li>
     </ul>
