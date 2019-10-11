@@ -34,9 +34,9 @@
 @code {
     private ViewModels.LoanApplication LoanApp = new ViewModels.LoanApplication();
 
-    public bool IsDisabled { get; set; }
+    private bool IsDisabled { get; set; }
 
-    async Task SubmitLoanApp()
+    private async Task SubmitLoanApp()
     {
         IsDisabled = true;
         await LendingService.SubmitLoanAppAsync(LoanApp);

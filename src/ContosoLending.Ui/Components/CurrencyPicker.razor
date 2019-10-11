@@ -15,7 +15,7 @@
     [Parameter]
     public EventCallback<ViewModels.LoanAmount> LoanAmountChanged { get; set; }
 
-    async Task SwitchCurrencyType()
+    private async Task SwitchCurrencyType()
     {
         Currency currencyTypeFrom =
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
