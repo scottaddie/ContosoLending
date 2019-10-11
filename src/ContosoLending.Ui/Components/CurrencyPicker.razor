@@ -21,17 +21,21 @@
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
         LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol
             ? Constants.BulgarianLevSymbol : Constants.UsDollarSymbol;
-        Currency currencyTypeTo =
-            CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
 
-        var conversion = new CurrencyConversion
+        if (LoanAmount.Amount > 0.00m)
         {
-            CurrencyTypeFrom = currencyTypeFrom,
-            CurrencyTypeTo = currencyTypeTo,
-            AmountToConvert = LoanAmount.Amount,
-        };
+            Currency currencyTypeTo =
+                CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
 
-        LoanAmount.Amount = await CurrencyConversionService.GetConvertedAmountAsync(conversion);
+            var conversion = new CurrencyConversion
+            {
+                CurrencyTypeFrom = currencyTypeFrom,
+                CurrencyTypeTo = currencyTypeTo,
+                AmountToConvert = LoanAmount.Amount,
+            };
+
+            LoanAmount.Amount = await CurrencyConversionService.GetConvertedAmountAsync(conversion);
+        }
 
         await LoanAmountChanged.InvokeAsync(LoanAmount);
     }
