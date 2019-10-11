@@ -1,4 +1,3 @@
-using AutoMapper;
 using ContosoLending.Ui.Infrastructure;
 using ContosoLending.Ui.Services;
 using Microsoft.AspNetCore.Builder;
@@ -33,11 +32,7 @@ namespace ContosoLending.Ui
                 config.BaseAddress = new Uri(
                     $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}"));
 
-            var mappingConfig = new MapperConfiguration(config =>
-                config.AddProfile(new MappingProfile()));
-
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddAutoMapper();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
