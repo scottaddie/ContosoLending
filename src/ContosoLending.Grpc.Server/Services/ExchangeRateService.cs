@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using ContosoLending.DomainModel;
+using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -17,8 +18,8 @@ namespace ContosoLending.Grpc.Server.Services
         {
             double exchangeRate = 0.00;
 
-            if ((request.CurrencyTypeFrom == "USD" && request.CurrencyTypeTo == "Lev") ||
-                (request.CurrencyTypeFrom == "Lev" && request.CurrencyTypeTo == "USD"))
+            if ((request.CurrencyTypeFrom == Constants.UsDollarAlias && request.CurrencyTypeTo == Constants.BulgarianLevAlias) ||
+                (request.CurrencyTypeFrom == Constants.BulgarianLevAlias && request.CurrencyTypeTo == Constants.UsDollarAlias))
             {
                 exchangeRate = 0.56;
             }

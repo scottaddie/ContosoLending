@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ContosoLending.Ui.Infrastructure
+namespace ContosoLending.Ui.Extensions
 {
     public static class ServiceCollectionExtensions
     {

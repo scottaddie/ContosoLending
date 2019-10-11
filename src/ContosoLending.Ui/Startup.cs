@@ -1,4 +1,4 @@
-using ContosoLending.Ui.Infrastructure;
+using ContosoLending.Ui.Extensions;
 using ContosoLending.Ui.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

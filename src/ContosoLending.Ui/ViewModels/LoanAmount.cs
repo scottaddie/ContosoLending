@@ -1,4 +1,4 @@
-﻿using ContosoLending.Ui.Infrastructure;
+﻿using ContosoLending.DomainModel;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

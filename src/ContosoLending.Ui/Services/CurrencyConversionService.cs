@@ -1,6 +1,5 @@
 ﻿using ContosoLending.DomainModel;
 using ContosoLending.Grpc.Server;
-using ContosoLending.Ui.Infrastructure;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
 using System;
