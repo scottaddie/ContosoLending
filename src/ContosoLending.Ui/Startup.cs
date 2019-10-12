@@ -11,28 +11,37 @@ namespace ContosoLending.Ui
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
 
+        public IWebHostEnvironment Env { get; set; }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGrpc();
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
+            IMvcBuilder builder = services.AddRazorPages();
 
+#if DEBUG
+            if (Env.IsDevelopment())
+            {
+                builder.AddRazorRuntimeCompilation();
+            }
+#endif
+
+            services.AddServerSideBlazor();
+            services.AddGrpc();
             services.AddSingleton<CurrencyConversionService>();
+            services.AddAutoMapper();
 
             IConfigurationSection loanServiceConfig = Configuration.GetSection("LendingService");
 
             services.AddHttpClient<LendingService>(config =>
                 config.BaseAddress = new Uri(
                     $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}"));
-
-            services.AddAutoMapper();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
