@@ -10,9 +10,7 @@ namespace ContosoLending.Ui.Services
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
 
-        public LendingService(
-            HttpClient httpClient,
-            IMapper mapper)
+        public LendingService(HttpClient httpClient, IMapper mapper)
         {
             _httpClient = httpClient;
             _mapper = mapper;
