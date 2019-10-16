@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-option csharp_namespace = "ContosoLending.Grpc.Server";
-package contosolending.grpc.server;
+option csharp_namespace = "ContosoLending.CurrencyExchange";
+package contosolending.currencyexchange;
 
 service ExchangeRateManager {
 	rpc GetExchangeRate (ExchangeRateRequest) returns (ExchangeRateReply);

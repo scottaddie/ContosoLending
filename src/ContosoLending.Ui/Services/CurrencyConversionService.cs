@@ -1,5 +1,5 @@
 ﻿using ContosoLending.DomainModel;
-using ContosoLending.Grpc.Server;
+using ContosoLending.CurrencyExchange;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
 using System;

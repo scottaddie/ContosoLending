@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\ContosoLending.Grpc.Server\Protos\exchange_rate.proto" GrpcServices="Client" Link="Protos\exchange_rate.proto" />
+    <Protobuf Include="..\ContosoLending.CurrencyExchange\Protos\exchange_rate.proto" GrpcServices="Client" Link="Protos\exchange_rate.proto" />
   </ItemGroup>
 
 </Project>

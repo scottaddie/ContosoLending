@@ -3,7 +3,7 @@ using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace ContosoLending.Grpc.Server.Services
+namespace ContosoLending.CurrencyExchange.Services
 {
     public class ExchangeRateService : ExchangeRateManager.ExchangeRateManagerBase
     {

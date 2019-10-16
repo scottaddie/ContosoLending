@@ -1,11 +1,11 @@
-﻿using ContosoLending.Grpc.Server.Services;
+﻿using ContosoLending.CurrencyExchange.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ContosoLending.Grpc.Server
+namespace ContosoLending.CurrencyExchange
 {
     public class Startup
     {

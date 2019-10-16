@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "ContosoLending.Grpc.Server": {
+    "ContosoLending.CurrencyExchange": {
       "commandName": "Project",
       "launchBrowser": false,
       "applicationUrl": "https://localhost:5002",
