@@ -26,8 +26,10 @@ namespace ContosoLending.CurrencyExchange
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<ExchangeRateService>();
+
                 endpoints.MapGet("/proto", async req =>
                     await req.Response.SendFileAsync("Protos/exchange_rate.proto", req.RequestAborted));
+
                 endpoints.MapGet("/", async req => 
                     await req.Response.WriteAsync("Healthy"));
             });
