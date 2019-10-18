@@ -22,8 +22,8 @@ namespace ContosoLending.Ui.Services
             var client = new ExchangeRateManager.ExchangeRateManagerClient(channel);
             var request = new ExchangeRateRequest
             {
-                CurrencyTypeFrom = GetCurrencyTypeAlias(currencyTypeFrom),
-                CurrencyTypeTo = GetCurrencyTypeAlias(currencyTypeTo),
+                CurrencyTypeFrom = currencyTypeFrom.ToAlias(),
+                CurrencyTypeTo = currencyTypeTo.ToAlias(),
             };
 
             ExchangeRateReply exchangeRate = await client.GetExchangeRateAsync(request);
@@ -49,28 +49,12 @@ namespace ContosoLending.Ui.Services
             return convertedAmount;
         }
 
-        public string GetCurrencyTypeAlias(Currency currencyType)
-        {
-            string currencyAlias = Constants.UsDollarAlias;
-            
-            if (currencyType == Currency.BulgarianLev)
+        public Currency GetCurrencyEnumValueFromSymbol(string currencyType) =>
+            currencyType switch
             {
-                currencyAlias = Constants.BulgarianLevAlias;
-            }
-
-            return currencyAlias;
-        }
-
-        public Currency GetCurrencyEnumValueFromSymbol(string currencyType)
-        {
-            Currency enumValue = Currency.USDollar;
-
-            if (currencyType == Constants.BulgarianLevSymbol)
-            {
-                enumValue = Currency.BulgarianLev;
-            }
-
-            return enumValue;
-        }
+                Constants.BulgarianLevSymbol    => Currency.BulgarianLev,
+                Constants.UsDollarSymbol        => Currency.USDollar,
+                _                               => throw new ArgumentException(message: "invalid currency type", paramName: nameof(currencyType)),
+            };
     }
 }
