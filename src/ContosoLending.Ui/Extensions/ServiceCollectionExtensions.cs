@@ -8,7 +8,7 @@ namespace ContosoLending.Ui.Extensions
         public static void AddAutoMapper(this IServiceCollection services)
         {
             var mappingConfig = new MapperConfiguration(config =>
-            config.AddProfile(new MappingProfile()));
+                config.AddProfile(new MappingProfile()));
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
