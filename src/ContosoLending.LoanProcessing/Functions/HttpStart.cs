@@ -1,10 +1,10 @@
-using System.Net.Http;
-using System.Threading.Tasks;
 using ContosoLending.DomainModel;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ContosoLending.LoanProcessing.Functions
 {
@@ -16,8 +16,8 @@ namespace ContosoLending.LoanProcessing.Functions
             [OrchestrationClient]DurableOrchestrationClient starter,
             ILogger log)
         {
-            string json = await req.Content.ReadAsStringAsync();
-            var loanApplication = JsonConvert.DeserializeObject<LoanApplication>(json);
+            using var jsonStream = await req.Content.ReadAsStreamAsync();
+            var loanApplication = await JsonSerializer.DeserializeAsync<LoanApplication>(jsonStream);
 
             string instanceId = await starter.StartNewAsync(nameof(Orchestrate), loanApplication);
 
