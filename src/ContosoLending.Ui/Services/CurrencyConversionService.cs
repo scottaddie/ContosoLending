@@ -1,9 +1,9 @@
-﻿using ContosoLending.DomainModel;
+﻿using System;
+using System.Threading.Tasks;
 using ContosoLending.CurrencyExchange;
+using ContosoLending.DomainModel;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
 
 namespace ContosoLending.Ui.Services
 {
@@ -33,18 +33,14 @@ namespace ContosoLending.Ui.Services
 
         public async Task<decimal> GetConvertedAmountAsync(CurrencyConversion conversion)
         {
-            decimal convertedAmount;
             decimal exchangeRate = Convert.ToDecimal(await GetExchangeRateAsync(
                 conversion.CurrencyTypeFrom, conversion.CurrencyTypeTo));
 
-            if (conversion.CurrencyTypeTo == Currency.BulgarianLev)
+            decimal convertedAmount = conversion.CurrencyTypeTo switch
             {
-                convertedAmount = decimal.Round(conversion.AmountToConvert / exchangeRate, 2);
-            }
-            else
-            {
-                convertedAmount = decimal.Round(conversion.AmountToConvert * exchangeRate, 2);
-            }
+                Currency.BulgarianLev => decimal.Round(conversion.AmountToConvert / exchangeRate, 2),
+                _ => decimal.Round(conversion.AmountToConvert * exchangeRate, 2),
+            };
 
             return convertedAmount;
         }
