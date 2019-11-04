@@ -4,8 +4,8 @@
 
 A minimum of Visual Studio 2019 version 16.3 is required, along with the following workloads:
 
-1. ASP.NET and web development
-1. Azure development
+1. **ASP.NET and web development**
+1. **Azure development**
 
 ### Provision required Azure resources
 
@@ -76,3 +76,7 @@ To run the app locally, configure the solution to launch the following 3 project
 1. *ContosoLending.CurrencyExchange*
 1. *ContosoLending.LoanProcessing*
 1. *ContosoLending.Ui*
+
+For example:
+
+![multiple project launch configuration in Visual Studio](https://user-images.githubusercontent.com/10702007/68152936-39716780-ff0a-11e9-9f62-babf2267ef77.png)
