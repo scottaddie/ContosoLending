@@ -16,7 +16,7 @@ The following software must be installed:
 1. Run the following command to configure your Azure CLI defaults for resource group and region:
 
 	```bash
-	az configure --defaults group=ConferenceTalks location=centralus
+	az configure --defaults group=<resource_group_name> location=<region_name>
 	```
 
 1. Run the following command to provision an Azure Storage account:
@@ -79,6 +79,13 @@ To run the app locally, configure the solution to launch the following 3 project
 1. *ContosoLending.LoanProcessing*
 1. *ContosoLending.Ui*
 
-For example:
+This is accomplished with the following steps:
 
-![multiple project launch configuration in Visual Studio](https://user-images.githubusercontent.com/10702007/68152936-39716780-ff0a-11e9-9f62-babf2267ef77.png)
+1. Right-click the solution name in **Solution Explorer** > **Properties**.
+1. Select the **Multiple startup projects** radio button, and configure the solution as follows:
+
+	![multiple project launch configuration in Visual Studio](https://user-images.githubusercontent.com/10702007/68152936-39716780-ff0a-11e9-9f62-babf2267ef77.png)
+
+1. Select the **OK** button.
+1. Select the **Start** button next to the **<Multiple Startup Projects>** launch configuration drop-down list.
+
