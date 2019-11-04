@@ -92,4 +92,4 @@ The following software must be installed:
 	![multiple project launch configuration in Visual Studio](https://user-images.githubusercontent.com/10702007/68152936-39716780-ff0a-11e9-9f62-babf2267ef77.png)
 
 1. Select the **OK** button.
-1. Select the **Start** button next to the **<Multiple Startup Projects>** launch configuration drop-down list.
+1. Select the **Start** button next to the **&lt;Multiple Startup Projects&gt;** launch configuration drop-down list.
