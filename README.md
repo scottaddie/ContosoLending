@@ -1,13 +1,15 @@
 ## Setup
 
-### Configure Visual Studio workloads
+### Install prerequisites
 
-A minimum of Visual Studio 2019 version 16.3 is required, along with the following workloads:
+The following software must be installed:
 
-1. **ASP.NET and web development**
-1. **Azure development**
+1. [.NET Core SDK version 3.0.100 or later](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+1. [Visual Studio 2019 version 16.3 or later](https://visualstudio.microsoft.com/downloads/) with the following workloads:
+	1. **ASP.NET and web development**
+	1. **Azure development**
 
-### Provision required Azure resources
+### Provision Azure resources
 
 1. Navigate to the Azure Portal in your web browser, and launch the Azure Cloud Shell.
 
