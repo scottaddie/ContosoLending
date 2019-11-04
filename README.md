@@ -1,3 +1,14 @@
+## App overview
+
+This ASP.NET Core 3.0 app represents a loan application processing pipeline. The following table outlines projects found in the solution.
+
+|Project						  |Description											 |
+|---------------------------------|------------------------------------------------------|
+|*ContosoLending.CurrencyExchange*|gRPC project handling currency conversion			 |
+|*ContosoLending.DomainModel*	  |.NET Standard 2.0 project containing shared models	 |
+|*ContosoLending.LoanProcessing*  |Durable Functions project for handling loan processing|
+|*ContosoLending.Ui*			  |Server-side Blazor UI project						 |
+
 ## Setup
 
 ### Install prerequisites
@@ -73,14 +84,7 @@ The following software must be installed:
 
 ## Testing
 
-To run the app locally, configure the solution to launch the following 3 projects:
-
-1. *ContosoLending.CurrencyExchange*
-1. *ContosoLending.LoanProcessing*
-1. *ContosoLending.Ui*
-
-This is accomplished with the following steps:
-
+1. Open the solution file (*src\ContosoLending.sln*).
 1. Right-click the solution name in **Solution Explorer** > **Properties**.
 1. Select the **Multiple startup projects** radio button, and configure the solution as follows:
 
@@ -88,4 +92,3 @@ This is accomplished with the following steps:
 
 1. Select the **OK** button.
 1. Select the **Start** button next to the **<Multiple Startup Projects>** launch configuration drop-down list.
-
