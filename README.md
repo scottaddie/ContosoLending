@@ -11,7 +11,7 @@ The following software must be installed:
 
 ### Provision Azure resources
 
-1. Navigate to the Azure Portal in your web browser, and launch the Azure Cloud Shell.
+1. Open the [Azure Cloud Shell](https://shell.azure.com) in your web browser.
 
 1. Run the following command to configure your Azure CLI defaults for resource group and region:
 
