@@ -85,7 +85,8 @@ The following software must be installed:
 ## Testing
 
 1. Open the solution file (*src\ContosoLending.sln*).
-1. Right-click the solution name in **Solution Explorer** > **Properties**.
+1. In **Solution Explorer**, right-click the *libman.json* file in the **ContosoLending.Ui** project > **Restore Client-Side Libraries**.
+1. In **Solution Explorer**, right-click the solution name > **Properties**.
 1. Select the **Multiple startup projects** radio button, and configure the solution as follows:
 
 	![multiple project launch configuration in Visual Studio](https://user-images.githubusercontent.com/10702007/68152936-39716780-ff0a-11e9-9f62-babf2267ef77.png)
