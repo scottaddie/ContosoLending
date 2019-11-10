@@ -1,13 +1,12 @@
 ﻿@page "/"
 @using ContosoLending.Ui.Components
-@using ContosoLending.Ui.Validation
 @inject NavigationManager NavigationManager
 @inject Services.LendingService LendingService
 
 <h3>Loan Application</h3>
 
 <EditForm Model="LoanApp" OnValidSubmit="SubmitLoanApp">
-    <RecursiveDataAnnotationsValidator />
+    <ObjectGraphDataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="form-group">

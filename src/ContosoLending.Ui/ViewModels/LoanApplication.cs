@@ -1,13 +1,13 @@
-﻿using ContosoLending.Ui.Validation;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ContosoLending.Ui.ViewModels
 {
     public class LoanApplication
     {
-        [ValidateRecursive]
+        [ValidateComplexType]
         public Applicant Applicant { get; set; } = new Applicant();
 
-        [ValidateRecursive]
+        [ValidateComplexType]
         public LoanAmount LoanAmount { get; set; } = new LoanAmount();
     }
 }

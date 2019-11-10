@@ -1,11 +1,11 @@
 ## App overview
 
-This ASP.NET Core 3.0 app represents a loan application processing pipeline. The following table outlines projects found in the solution.
+This ASP.NET Core 3.1 app represents a loan application processing pipeline. The following table outlines projects found in the solution.
 
 |Project						  |Description											 |
 |---------------------------------|------------------------------------------------------|
 |*ContosoLending.CurrencyExchange*|gRPC project handling currency conversion			 |
-|*ContosoLending.DomainModel*	  |.NET Standard 2.0 project containing shared models	 |
+|*ContosoLending.DomainModel*	  |.NET Standard project containing shared models		 |
 |*ContosoLending.LoanProcessing*  |Durable Functions project for handling loan processing|
 |*ContosoLending.Ui*			  |Server-side Blazor UI project						 |
 
@@ -15,7 +15,7 @@ This ASP.NET Core 3.0 app represents a loan application processing pipeline. The
 
 The following software must be installed:
 
-1. [.NET Core SDK version 3.0.100 or later](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+1. [.NET Core SDK version SDK 3.1.100-preview2-014569 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 1. [Visual Studio 2019 version 16.3 or later](https://visualstudio.microsoft.com/downloads/) with the following workloads:
 	1. **ASP.NET and web development**
 	1. **Azure development**
