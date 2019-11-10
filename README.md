@@ -16,7 +16,7 @@ This ASP.NET Core 3.1 app represents a loan application processing pipeline. The
 The following software must be installed:
 
 1. [.NET Core SDK version SDK 3.1.100-preview2-014569 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-1. [Visual Studio 2019 version 16.3 or later](https://visualstudio.microsoft.com/downloads/) with the following workloads:
+1. [Visual Studio 2019 version 16.4 or later](https://visualstudio.microsoft.com/downloads/) with the following workloads:
 	1. **ASP.NET and web development**
 	1. **Azure development**
 
