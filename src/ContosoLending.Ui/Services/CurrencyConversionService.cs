@@ -4,6 +4,7 @@ using ContosoLending.CurrencyExchange;
 using ContosoLending.DomainModel;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
+using static ContosoLending.DomainModel.Constants;
 
 namespace ContosoLending.Ui.Services
 {
@@ -48,9 +49,9 @@ namespace ContosoLending.Ui.Services
         public Currency GetCurrencyEnumValueFromSymbol(string currencyType) =>
             currencyType switch
             {
-                Constants.BulgarianLevSymbol    => Currency.BulgarianLev,
-                Constants.UsDollarSymbol        => Currency.USDollar,
-                _                               => throw new ArgumentException(message: "invalid currency type", paramName: nameof(currencyType)),
+                BulgarianLevSymbol  => Currency.BulgarianLev,
+                UsDollarSymbol      => Currency.USDollar,
+                _                   => throw new ArgumentException(message: "invalid currency type", paramName: nameof(currencyType)),
             };
     }
 }

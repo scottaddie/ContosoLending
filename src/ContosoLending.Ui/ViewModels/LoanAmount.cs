@@ -1,7 +1,7 @@
-﻿using ContosoLending.DomainModel;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using static ContosoLending.DomainModel.Constants;
 
 namespace ContosoLending.Ui.ViewModels
 {
@@ -11,6 +11,6 @@ namespace ContosoLending.Ui.ViewModels
         [Range(1, 100000)]
         public decimal Amount { get; set; } = 0.00m;
 
-        public string CurrencyType { get; set; } = Constants.UsDollarSymbol;
+        public string CurrencyType { get; set; } = UsDollarSymbol;
     }
 }

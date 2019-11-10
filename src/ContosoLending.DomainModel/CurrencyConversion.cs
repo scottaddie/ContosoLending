@@ -1,4 +1,5 @@
 ﻿using System;
+using static ContosoLending.DomainModel.Constants;
 
 namespace ContosoLending.DomainModel
 {
@@ -22,8 +23,8 @@ namespace ContosoLending.DomainModel
         public static string ToAlias(this Currency currency) =>
             currency switch
             {
-                Currency.BulgarianLev   => Constants.BulgarianLevAlias,
-                Currency.USDollar       => Constants.UsDollarAlias,
+                Currency.BulgarianLev   => BulgarianLevAlias,
+                Currency.USDollar       => UsDollarAlias,
                 _                       => throw new ArgumentException(message: "invalid enum value", paramName: nameof(currency)),
             };
     }

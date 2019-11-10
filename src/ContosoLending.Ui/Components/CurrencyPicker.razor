@@ -1,5 +1,6 @@
 ﻿@using ContosoLending.DomainModel
 @using ContosoLending.Ui.Services
+@using static ContosoLending.DomainModel.Constants
 @inject CurrencyConversionService CurrencyConversionService
 
 <div class="input-group-prepend" @onclick="SwitchCurrencyType">
@@ -22,8 +23,8 @@
 
         Currency currencyTypeFrom =
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
-        LoanAmount.CurrencyType = LoanAmount.CurrencyType == Constants.UsDollarSymbol
-            ? Constants.BulgarianLevSymbol : Constants.UsDollarSymbol;
+        LoanAmount.CurrencyType = LoanAmount.CurrencyType == UsDollarSymbol
+            ? BulgarianLevSymbol : UsDollarSymbol;
 
         if (LoanAmount.Amount > 0.00m)
         {
