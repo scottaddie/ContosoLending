@@ -3,22 +3,22 @@
 @inject CurrencyConversionService CurrencyConversionService
 
 <div class="input-group-prepend" @onclick="SwitchCurrencyType">
-    <button class="btn btn-outline-secondary" type="button" disabled="@IsDisabled">@LoanAmount.CurrencyType</button>
+    <button class="btn btn-outline-secondary" type="button">@LoanAmount.CurrencyType</button>
 </div>
-<InputNumber id="loanAmount" @bind-Value="LoanAmount.Amount" disabled="@IsDisabled" class="form-control" />
+<InputNumber @bind-Value="LoanAmount.Amount" disabled="@IsTextBoxDisabled" class="form-control" />
 
 @code {
-    private bool IsDisabled { get; set; }
+    private bool IsTextBoxDisabled { get; set; }
 
     [Parameter]
     public ViewModels.LoanAmount LoanAmount { get; set; }
 
     [Parameter]
     public EventCallback<ViewModels.LoanAmount> LoanAmountChanged { get; set; }
-
+    
     private async Task SwitchCurrencyType()
     {
-        IsDisabled = true;
+        IsTextBoxDisabled = true;
 
         Currency currencyTypeFrom =
             CurrencyConversionService.GetCurrencyEnumValueFromSymbol(LoanAmount.CurrencyType);
@@ -38,9 +38,9 @@
             };
 
             LoanAmount.Amount = await CurrencyConversionService.GetConvertedAmountAsync(conversion);
-            IsDisabled = false;
         }
 
+        IsTextBoxDisabled = false;
         await LoanAmountChanged.InvokeAsync(LoanAmount);
     }
 }

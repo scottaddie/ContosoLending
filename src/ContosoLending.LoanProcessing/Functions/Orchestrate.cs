@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ContosoLending.DomainModel;
 using ContosoLending.LoanProcessing.Models;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 using Microsoft.Extensions.Logging;
 
@@ -13,7 +14,7 @@ namespace ContosoLending.LoanProcessing.Functions
     {
         [FunctionName(nameof(Orchestrate))]
         public static async Task<LoanApplicationResult> Orchestrate(
-            [OrchestrationTrigger] DurableOrchestrationContext context,
+            [OrchestrationTrigger] IDurableOrchestrationContext context,
             [SignalR(HubName = "dashboard")] IAsyncCollector<SignalRMessage> dashboardMessages,
             ILogger logger)
         {

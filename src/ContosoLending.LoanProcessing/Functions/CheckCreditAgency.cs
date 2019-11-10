@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ContosoLending.LoanProcessing.Models;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 using Microsoft.Extensions.Logging;
 

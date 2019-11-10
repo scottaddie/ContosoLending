@@ -1,5 +1,6 @@
 using ContosoLending.DomainModel;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -13,7 +14,7 @@ namespace ContosoLending.LoanProcessing.Functions
         [FunctionName(nameof(HttpStart))]
         public static async Task<HttpResponseMessage> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [DurableClient]IDurableOrchestrationClient starter,
             ILogger log)
         {
             using var jsonStream = await req.Content.ReadAsStreamAsync();
