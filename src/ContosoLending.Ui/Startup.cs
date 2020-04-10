@@ -44,9 +44,9 @@ namespace ContosoLending.Ui
                     $"{loanServiceConfig["BaseAddress"]}{loanServiceConfig["Routes:HttpStart"]}"));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (Env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
