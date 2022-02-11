@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.11.4" />
+    <PackageReference Include="Google.Protobuf" Version="3.15.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.28.0" />
     <PackageReference Include="Grpc.Tools" Version="2.28.1">
       <PrivateAssets>all</PrivateAssets>
